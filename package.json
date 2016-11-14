@@ -1,0 +1,78 @@
+{
+  "_args": [
+    [
+      "fa@git+https://github.com/dodio/fa.git",
+      "E:\\dlopx\\dlopx"
+    ]
+  ],
+  "_from": "git+https://github.com/dodio/fa.git",
+  "_id": "fa@1.0.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/fa",
+  "_phantomChildren": {},
+  "_requested": {
+    "hosted": {
+      "directUrl": "https://raw.githubusercontent.com/dodio/fa/master/package.json",
+      "gitUrl": "git://github.com/dodio/fa.git",
+      "httpsUrl": "git+https://github.com/dodio/fa.git",
+      "shortcut": "github:dodio/fa",
+      "ssh": "git@github.com:dodio/fa.git",
+      "sshUrl": "git+ssh://git@github.com/dodio/fa.git",
+      "type": "github"
+    },
+    "name": "fa",
+    "raw": "fa@git+https://github.com/dodio/fa.git",
+    "rawSpec": "git+https://github.com/dodio/fa.git",
+    "scope": null,
+    "spec": "git+https://github.com/dodio/fa.git",
+    "type": "hosted"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "git+https://github.com/dodio/fa.git#86521ee80878dd40cd8e2512df0dffccdec8cc95",
+  "_shasum": "e86345ee34923c99905ebc416e063723abdf9b3f",
+  "_shrinkwrap": null,
+  "_spec": "fa@git+https://github.com/dodio/fa.git",
+  "_where": "E:\\dlopx\\dlopx",
+  "author": {
+    "name": "dodio"
+  },
+  "bugs": {
+    "url": "https://github.com/dodio/fa/issues"
+  },
+  "dependencies": {
+    "bluebird": "^3.3.5",
+    "body-parser": "^1.15.0",
+    "compression": "^1.6.1",
+    "config": "^1.19.0",
+    "cookie-parser": "^1.4.1",
+    "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "lodash": "^4.8.2",
+    "request": "^2.70.0",
+    "response-time": "^2.3.1",
+    "session-file-store": "^0.2.0",
+    "swig": "^1.4.2"
+  },
+  "description": "node web",
+  "devDependencies": {},
+  "gitHead": "86521ee80878dd40cd8e2512df0dffccdec8cc95",
+  "homepage": "https://github.com/dodio/fa#readme",
+  "license": "ISC",
+  "main": "index.js",
+  "name": "fa",
+  "optionalDependencies": {},
+  "readme": "# fa\r\nnode web 脚手架，工具集合\r\n\r\n程序流程（以dev为例）\r\n\r\n进入dev\r\n1、hack环境变量.\r\n2、构造Fa实例\r\n3、对再做一些应用级别的配置\r\n4、启动\r\n\r\n\r\n\r\n##fa只是一个规则与工具的提供者\r\n\r\n目前大致有以下模块：\r\n(模块间启动时的依赖或者顺序通过fa本身的事件来保证，虽然容易死锁)\r\n\r\n###fa-swig\r\n扩展了swig模板引擎\r\n\r\n**locals 管理规范：**\r\n1、settings :     express settings （自动注入的）\r\n3、config ：      站点的设置(静态数据）\r\n3、_locals :      通过res设置的locals（express自动保留的）\r\n2、util :         模板帮助函数\r\n4、meta           分类等数据相关的locals函数或者数据\r\n5、模板内所需数据\r\n\r\n所有相关locals的函数，均通过中间件的方式来注入，而不使用app.locals，这样可以提高locals的灵活性（因为可以访问每个res的相关信息）\r\n\r\n###功能：\r\n数据变量输出和转译，locals函数执行，数据变量输出时过滤，基本的for循环遍历等（swig本身已经自带）\r\n方便访问系统中的静态数据（站点设置，元数据等等）(计划通过对locals的规范实现）\r\n实现 data api数据直接模板内请求，转化成js输出内容，或者ajax异步请求（计划用tag实现）\r\n\r\n\r\n###bee\r\n一个通过配置，自动调用后端http api的工具\r\n\r\n后端服务器信息可配置\r\n自动解析返回结果到指定格式（先支持json）\r\n返回后端服务器header\r\n需要支持同一个接口配置不同的服务器，这些服务器可以提供不同版本的接口\r\n根据指定接口版本，查找对应的后端服务器\r\n可以设置接口版本的服务器配置不存在时的策略（使用最新，或者报错）\r\n提供一些middleware组件\r\n\r\n###horse\r\n一个路由分发加载器（要自动）\r\n\r\n###middleware\r\n中间件仓库，所有的express中间件都注册在这个空间下。",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dodio/fa.git"
+  },
+  "scripts": {
+    "dev": "node ./test/server/dev.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.0"
+}
